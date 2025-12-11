@@ -1,0 +1,190 @@
+//This Class is for the Entry for new Patients in Hospital System.
+//The Interface is easy to deal with. File Handling is still pending
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.Date;
+
+class AddPatient extends JFrame {
+    JComboBox comboBox,roomBox;
+    JTextField textNumber,textName,textDisease,textDeposit;
+    JRadioButton r1,r2;
+    JLabel date;
+    JButton b1,b2;
+    ButtonGroup bg;
+
+
+    AddPatient(){
+
+        JPanel panel = new JPanel();
+        panel.setBounds(0,5,840,540);
+        panel.setLayout(null);
+        panel.setBackground(new Color(129, 133, 137	 ));
+        add(panel);
+
+
+        ImageIcon icon1 = new ImageIcon("E:\\Side Code\\src\\Icon.png");
+        setIconImage(icon1.getImage());
+
+        ImageIcon hospital = new ImageIcon("E:\\Side Code\\src\\images (1).png");
+        Image image = hospital.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT);
+        ImageIcon icon = new ImageIcon(image);
+        JLabel iconLabel = new JLabel(icon);
+        iconLabel.setBounds(550,150,200,200);
+        panel.add(iconLabel);
+
+        JLabel labelName= new JLabel("\"New Patient Form\"");
+        labelName.setForeground(Color.BLACK);
+        labelName.setBounds(118,11,260,53);
+        labelName.setFont(new Font("Tahoma",Font.BOLD,20));
+        panel.add(labelName);
+
+        JLabel pid = new JLabel("Patient ID");
+        pid.setBounds(35,76,200,14);
+        pid.setFont(new Font("Roboto",Font.BOLD,14));
+        pid.setForeground(Color.WHITE);
+        panel.add(pid);
+
+        comboBox = new JComboBox<>(new String[] {"CNIC","Hospital ID"});
+        comboBox.setFocusable(false);
+        comboBox.setBorder(BorderFactory.createEmptyBorder());
+        comboBox.setUI(new javax.swing.plaf.basic.BasicComboBoxUI());
+        comboBox.setBackground(Color.DARK_GRAY);
+        comboBox.setForeground(Color.WHITE);
+        comboBox.setBounds(271,73,150,20);
+        comboBox.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(comboBox);
+
+        JLabel number = new JLabel("ID Number ");
+        number.setForeground(Color.WHITE);
+        number.setBounds(35,111,200,14);
+        number.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(number);
+
+        textNumber = new JTextField();
+        textNumber.setBorder(null);
+        textNumber.setBounds(271,111,150,20);
+        textNumber.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(textNumber);
+
+        JLabel name = new JLabel("Patient Name");
+        name.setForeground(Color.WHITE);
+        name.setBounds(35,151,200,14);
+        name.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(name);
+
+        textName = new JTextField();
+        textName.setBorder(null);
+        textName.setBounds(271,151,150,20);
+        textName.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(textName);
+
+        JLabel gender = new JLabel("Gender ");
+        gender.setForeground(Color.WHITE);
+        gender.setBounds(35,191,200,14);
+        gender.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(gender);
+
+        r1 = new JRadioButton("Male");
+        r1.setOpaque(false);
+        r1.setFocusPainted(false);
+        r1.setForeground(Color.WHITE);
+        r1.setBounds(271,191,80,15);
+        r1.setFont(new Font("Roboto",Font.BOLD,14));
+
+        r2 = new JRadioButton("Female");
+        r2.setOpaque(false);
+        r2.setFocusPainted(false);
+        r2.setForeground(Color.WHITE);
+        r2.setBounds(350,191,80,15);
+        r2.setFont(new Font("Roboto",Font.BOLD,14));
+
+        bg = new ButtonGroup();
+        bg.add(r1);
+        bg.add(r2);
+
+        panel.add(r1);
+        panel.add(r2);
+
+        JLabel disease = new JLabel("Disease");
+        disease.setForeground(Color.WHITE);
+        disease.setBounds(35,231,200,14);
+        disease.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(disease);
+
+        textDisease = new JTextField();
+        textDisease.setBorder(null);
+        textDisease.setBounds(271,231,150,20);
+        textDisease.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(textDisease);
+
+        JLabel labelRoom = new JLabel("Room Number");
+        labelRoom.setForeground(Color.WHITE);
+        labelRoom.setBounds(35,274,200,14);
+        labelRoom.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(labelRoom);
+
+        roomBox = new JComboBox<>(new String[] {"ER-1","ER-2","G-110","G-111","G-112","OT-201","OT-202","OT-205","Dressing Room"});
+        roomBox.setFocusable(false);
+        roomBox.setBorder(BorderFactory.createEmptyBorder());
+        roomBox.setUI(new javax.swing.plaf.basic.BasicComboBoxUI());
+        roomBox.setBackground(Color.DARK_GRAY);
+        roomBox.setForeground(Color.WHITE);
+        roomBox.setBounds(271,274,150,20);
+        roomBox.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(roomBox);
+
+        JLabel labelDate = new JLabel("Time ");
+        labelDate.setForeground(Color.WHITE);
+        labelDate.setBounds(35,316,200,14);
+        labelDate.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(labelDate);
+
+        Date datetime = new Date();
+
+        date =  new JLabel(""+datetime);
+        date.setForeground(Color.WHITE);
+        date.setBounds(271,316,250,14);
+        date.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(date);
+
+        JLabel deposit = new JLabel("Deposit");
+        deposit.setForeground(Color.WHITE);
+        deposit.setBounds(35,359,200,17);
+        deposit.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(deposit);
+
+        textDeposit = new JTextField();
+        textDeposit.setBorder(null);
+        textDeposit.setBounds(271,359,150,20);
+        textDeposit.setFont(new Font("Roboto",Font.BOLD,14));
+        panel.add(textDeposit);
+
+        b1= new JButton("Add");
+        b1.setForeground(Color.WHITE);
+        b1.setBackground(Color.BLACK);
+        b1.setFocusPainted(false);
+        b1.setBorder(null);
+        b1.setBounds(100,430,120,30);
+        panel.add(b1);
+
+        b2= new JButton("Back");
+        b2.setForeground(Color.WHITE);
+        b2.setBackground(Color.BLACK);
+        b2.setBounds(260,430,120,30);
+        b2.setFocusPainted(false);
+        b2.setBorder(null);
+        b2.addActionListener(ae->{
+            dispose();
+        });
+        panel.add(b2);
+
+        setUndecorated(true);
+        setTitle("Reception Page");
+        setSize(850,550);
+        setLocation(300,285);
+        setResizable(true);
+        setVisible(true);
+    }
+
+}
