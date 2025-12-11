@@ -1,0 +1,71 @@
+//This GUI Interface is Make up with JTable Component. It make the Data Organize.
+
+import javax.swing.*;
+import java.awt.*;
+
+class Department extends JFrame {
+    JTable tb;
+    JScrollPane sp;
+    JButton back;
+
+    Department(){
+
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setBounds(0,5,840,540);
+        panel.setBackground(new Color(129, 133, 137	 ));
+        add(panel);
+
+
+
+        JLabel labelName= new JLabel("\"Hospital Department Directory\"");
+        labelName.setForeground(Color.BLACK);
+        labelName.setBounds(155,11,350,53);
+        labelName.setFont(new Font("Roboto",Font.BOLD,20));
+        panel.add(labelName);
+
+        String[][] data = {
+                {"Emergency Department", "Dr. Zohaib Ahmed", "Ground Floor", "24/7"},
+                {"Intensive Care Unit", "Dr. Inaya", "2nd Floor", "24/7"},
+                {"Outpatient Department", "Dr. Ali", "3rd Floor", "8:00 AM – 4:00 PM"},
+                {"Surgery Department", "Dr. Babar Ali", "3rd Floor", "On-Call (Emergency 24/7)"},
+                {"Laboratory Department", "Dr. Yasir", "Ground Floor", "7:00 AM – 11:00 PM"},
+                {"Cardiology Department","Dr. Farhan","2nd Floor","9:00 AM – 5:00 PM"},
+                {"Radiology Department","Dr. Saira","Ground Floor", "8:00 AM – 10:00 PM"},
+                {"Pediatrics Department","Dr. Hira","1st Floor","9:00 AM – 5:00 PM"}
+
+        };
+        String[] colData = {
+                "Department","Head of Department","Location","Operating Hours"
+        };
+        tb = new JTable(data,colData);
+        tb.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        tb.setForeground(Color.WHITE);
+        tb.setBackground(Color.GRAY);
+        tb.setSelectionBackground(new Color(200, 200, 200));
+        tb.setSelectionForeground(Color.BLACK);
+        sp = new JScrollPane(tb);
+        sp.setBounds(15, 160, 600, 153);
+        panel.add(sp);
+
+
+        back= new JButton("Back");
+        back.setForeground(Color.WHITE);
+        back.setBackground(Color.BLACK);
+        back.setBounds(260,430,120,30);
+        back.setFocusPainted(false);
+        back.setBorder(null);
+        back.addActionListener(ae->{
+            dispose();
+        });
+        panel.add(back);
+
+        ImageIcon icon1 = new ImageIcon("E:\\Side Code\\src\\Icon.png");
+        setIconImage(icon1.getImage());
+        setUndecorated(true);
+        setSize(650,550);
+        setLocation(300,285);
+        setResizable(true);
+        setVisible(true);
+    }
+}
