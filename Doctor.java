@@ -1,5 +1,4 @@
 //This Class is Used to display the store data for "Hospital Doctors"
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,14 +9,15 @@ public class Doctor extends JFrame {
 
     DoctorInfo[] doc = {
             new DoctorInfo("Select Employee","","","","","",""),
-            new DoctorInfo("Dr. Zohaib Ahmed","Emergency Department","Head Supervisor","9am to 6pm","Monday to Saturday","0319-9625846","Room # 010 G-Floor"),
-            new DoctorInfo("Dr. Inaya","Intensive Care Unit","Senior Consultant","1am to 6pm","Monday to Saturday (On Call Emergency)","0312-1232132 ","Room # 220 2-Floor"),
-            new DoctorInfo("Dr. Ali Raza","Outpatient Department","Consultant","9am to 4pm","Monday to Friday","0312-1243523","Room # 120 1-Floor"),
-            new DoctorInfo("Dr. Babar Ali","Surgery Department","Senior Consultant","12am to 5pm","Monday, Wednesday and Thursday","0312-1236456","Room # 321 3-Floor"),
-            new DoctorInfo("Dr. Asfand Yar","Laboratory Department","Lab In-Charge","11am to 4pm","Monday to Friday","0332-1236456","Room # 323 3-Floor"),
-            new DoctorInfo("Dr. Farhan","Cardiology Department","Cardiologist (Head of Depart.)","11am to 3pm","Monday adn Friday","0312-1233412","Room # 334 3-Floor"),
-            new DoctorInfo("Dr. Saira","Radiology Department","Senior Radiologist","10am to 7pm","Monday to Saturday","0312-123542","Room # 013 G-Floor"),
-            new DoctorInfo("Dr. Hira","Pediatrics Department","Pediatrician","10am to 5pm","Monday to Friday","0312-1231233","Room # 122 1-Floor")
+            new DoctorInfo("Dr. Zohaib Ahmed","Emergency Department","Head Supervisor (CEO)","9am to 6pm","Monday to Saturday","0319-9625846","Room # 001 G-Floor"),
+            new DoctorInfo("Dr. Inaya","Intensive Care Unit","Senior Consultant","1am to 6pm","Monday to Saturday (On Call Emergency)","0312-1232132 ","Room # 201 2-Floor"),
+            new DoctorInfo("Dr. Ali Raza","Outpatient Department","Consultant","9am to 4pm","Monday to Friday","0312-1243523","Room # 102 1-Floor"),
+            new DoctorInfo("Dr. Babar Ali","Surgery Department","Senior Consultant","12am to 5pm","Monday, Wednesday and Thursday","0312-1236456","Room # 202 2-Floor"),
+            new DoctorInfo("Dr. Asfand Yar","Laboratory Department","Lab In-Charge","11am to 4pm","Monday to Friday","0332-1236456","Room # 101 1-Floor"),
+            new DoctorInfo("Dr. Farhan","Cardiology Department","Cardiologist (Head of Depart.)","11am to 3pm","Monday adn Friday","0312-1233412","Room # 103 1-Floor"),
+            new DoctorInfo("Dr. Saira","Radiology Department","Senior Radiologist","10am to 7pm","Monday to Saturday","0312-123542","Room # 002 G-Floor"),
+            new DoctorInfo("Dr. Hira","Pediatrics Department","Pediatrician","10am to 5pm","Monday to Friday","0312-1231233","Room # 104 1-Floor"),
+            new DoctorInfo("Dr. Gul-e-lala (Assistant)","Emergency Department","Assist Doctors","11am to 5pm","Monday to Friday","0312-8785564","Not Assigned")
     };
 
     Doctor(){
@@ -66,12 +66,13 @@ public class Doctor extends JFrame {
         });
         add(back);
 
-        ImageIcon icon = new ImageIcon("E:\\Side Code\\src\\Icon.png");
+        ImageIcon icon = new ImageIcon("E:\\2nd Semester\\src\\Icon.png");
         setIconImage(icon.getImage());
-        setLayout(null);
         getContentPane().setBackground(new Color(129, 133, 137	 ));
+        setLayout(null);
         setSize(650,550);
         setLocation(300,285);
+        setTitle("Doctors Information");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setResizable(false);
         setVisible(true);
