@@ -18,7 +18,8 @@ class Department extends JFrame {
 
         JLabel labelName= new JLabel("\"Hospital Department Directory\"");
         labelName.setForeground(Color.BLACK);
-        labelName.setBounds(175,55,350,53);
+        labelName.setBounds(50, 30, 550, 50);
+        labelName.setHorizontalAlignment(SwingConstants.CENTER);
         labelName.setFont(new Font("Roboto",Font.BOLD,20));
         panel.add(labelName);
 
@@ -35,7 +36,7 @@ class Department extends JFrame {
         String[] colData = {
                 "Department","Head of Department","Location","Operating Hours"
         };
-        
+
         tb = new JTable(data,colData);
         tb.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         tb.setForeground(Color.WHITE);
@@ -60,13 +61,12 @@ class Department extends JFrame {
 
         ImageIcon icon = new ImageIcon("E:\\2nd Semester\\src\\Icon.png");
         setIconImage(icon.getImage());
-        
+
+        setResizable(true);
         setLocation(300,285);
         setSize(650,450);
-        setTitle("Departments Window");
-        setResizable(true);
+        setTitle("Hospital Department Directory");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
-}
 }
