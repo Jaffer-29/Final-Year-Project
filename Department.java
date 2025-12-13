@@ -16,28 +16,26 @@ class Department extends JFrame {
         panel.setBackground(new Color(129, 133, 137	 ));
         add(panel);
 
-
-
         JLabel labelName= new JLabel("\"Hospital Department Directory\"");
         labelName.setForeground(Color.BLACK);
-        labelName.setBounds(155,11,350,53);
+        labelName.setBounds(175,55,350,53);
         labelName.setFont(new Font("Roboto",Font.BOLD,20));
         panel.add(labelName);
 
         String[][] data = {
                 {"Emergency Department", "Dr. Zohaib Ahmed", "Ground Floor", "24/7"},
-                {"Intensive Care Unit", "Dr. Inaya", "2nd Floor", "24/7"},
-                {"Outpatient Department", "Dr. Ali", "3rd Floor", "8:00 AM – 4:00 PM"},
-                {"Surgery Department", "Dr. Babar Ali", "3rd Floor", "On-Call (Emergency 24/7)"},
-                {"Laboratory Department", "Dr. Yasir", "Ground Floor", "7:00 AM – 11:00 PM"},
-                {"Cardiology Department","Dr. Farhan","2nd Floor","9:00 AM – 5:00 PM"},
                 {"Radiology Department","Dr. Saira","Ground Floor", "8:00 AM – 10:00 PM"},
-                {"Pediatrics Department","Dr. Hira","1st Floor","9:00 AM – 5:00 PM"}
-
+                {"Outpatient Department", "Dr. Ali Raza", "1st Floor", "8:00 AM – 4:00 PM"},
+                {"Cardiology Department","Dr. Farhan","1st Floor","9:00 AM – 5:00 PM"},
+                {"Pediatrics Department","Dr. Hira","1st Floor","9:00 AM – 5:00 PM"},
+                {"Laboratory Department", "Dr. Asfand Yar", "1st Floor", "7:00 AM – 11:00 PM"},
+                {"Intensive Care Unit", "Dr. Inaya", "2nd Floor", "24/7"},
+                {"Surgery Department", "Dr. Babar Ali", "2nd Floor", "On-Call (Emergency 24/7)"}
         };
         String[] colData = {
                 "Department","Head of Department","Location","Operating Hours"
         };
+        
         tb = new JTable(data,colData);
         tb.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         tb.setForeground(Color.WHITE);
@@ -45,14 +43,14 @@ class Department extends JFrame {
         tb.setSelectionBackground(new Color(200, 200, 200));
         tb.setSelectionForeground(Color.BLACK);
         sp = new JScrollPane(tb);
-        sp.setBounds(15, 160, 600, 153);
+        sp.setBounds(20, 140, 600, 153);
         panel.add(sp);
 
 
         back= new JButton("Back");
         back.setForeground(Color.WHITE);
         back.setBackground(Color.BLACK);
-        back.setBounds(260,430,120,30);
+        back.setBounds(260,355,120,30);
         back.setFocusPainted(false);
         back.setBorder(null);
         back.addActionListener(ae->{
@@ -60,12 +58,15 @@ class Department extends JFrame {
         });
         panel.add(back);
 
-        ImageIcon icon1 = new ImageIcon("E:\\Side Code\\src\\Icon.png");
-        setIconImage(icon1.getImage());
-        setUndecorated(true);
-        setSize(650,550);
+        ImageIcon icon = new ImageIcon("E:\\2nd Semester\\src\\Icon.png");
+        setIconImage(icon.getImage());
+        
         setLocation(300,285);
+        setSize(650,450);
+        setTitle("Departments Window");
         setResizable(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
+}
 }
