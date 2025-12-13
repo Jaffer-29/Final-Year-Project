@@ -22,17 +22,6 @@ class AddPatient extends JFrame {
         panel.setBackground(new Color(129, 133, 137	 ));
         add(panel);
 
-
-        ImageIcon icon1 = new ImageIcon("E:\\Side Code\\src\\Icon.png");
-        setIconImage(icon1.getImage());
-
-        ImageIcon hospital = new ImageIcon("E:\\Side Code\\src\\images (1).png");
-        Image image = hospital.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT);
-        ImageIcon icon = new ImageIcon(image);
-        JLabel iconLabel = new JLabel(icon);
-        iconLabel.setBounds(550,150,200,200);
-        panel.add(iconLabel);
-
         JLabel labelName= new JLabel("\"New Patient Form\"");
         labelName.setForeground(Color.BLACK);
         labelName.setBounds(118,11,260,53);
@@ -124,13 +113,30 @@ class AddPatient extends JFrame {
         labelRoom.setFont(new Font("Roboto",Font.BOLD,14));
         panel.add(labelRoom);
 
-        roomBox = new JComboBox<>(new String[] {"ER-1","ER-2","G-110","G-111","G-112","OT-201","OT-202","OT-205","Dressing Room"});
+        roomBox = new JComboBox<>(new String[] {
+                "001 - ER",
+                "002 - Imaging",
+                "003 - Dressing",
+                "101 - Lab",
+                "102 - OPD",
+                "103 - Cardiology",
+                "104 - Pediatrics",
+                "201 - ICU",
+                "202 - Surgery",
+                "OT-205",
+                "OT-206",
+                "OT-207",
+                "G-301 - General",
+                "G-302 - Private",
+                "G-303 - Private"
+        });
         roomBox.setFocusable(false);
         roomBox.setBorder(BorderFactory.createEmptyBorder());
         roomBox.setUI(new javax.swing.plaf.basic.BasicComboBoxUI());
         roomBox.setBackground(Color.DARK_GRAY);
         roomBox.setForeground(Color.WHITE);
-        roomBox.setBounds(271,274,150,20);
+        roomBox.setBounds(271, 274, 155, 20);
+
         roomBox.setFont(new Font("Roboto",Font.BOLD,14));
         panel.add(roomBox);
 
@@ -161,29 +167,39 @@ class AddPatient extends JFrame {
         panel.add(textDeposit);
 
         b1= new JButton("Add");
+        b1.setBorder(null);
+        b1.setFocusPainted(false);
         b1.setForeground(Color.WHITE);
         b1.setBackground(Color.BLACK);
-        b1.setFocusPainted(false);
-        b1.setBorder(null);
         b1.setBounds(100,430,120,30);
         panel.add(b1);
 
         b2= new JButton("Back");
+        b2.setFocusPainted(false);
         b2.setForeground(Color.WHITE);
         b2.setBackground(Color.BLACK);
         b2.setBounds(260,430,120,30);
-        b2.setFocusPainted(false);
         b2.setBorder(null);
         b2.addActionListener(ae->{
             dispose();
         });
         panel.add(b2);
 
-        setUndecorated(true);
-        setTitle("Reception Page");
-        setSize(850,550);
-        setLocation(300,285);
+        ImageIcon hospital = new ImageIcon("E:\\Side Code\\src\\images (1).png");
+        Image image = hospital.getImage().getScaledInstance(200,200,Image.SCALE_DEFAULT);
+        ImageIcon icon = new ImageIcon(image);
+        JLabel iconLabel = new JLabel(icon);
+        iconLabel.setBounds(550,150,200,200);
+        panel.add(iconLabel);
+
+        ImageIcon icon1 = new ImageIcon("E:\\Side Code\\src\\Icon.png");
+        setIconImage(icon1.getImage());
+
         setResizable(true);
+        setLocation(300,285);
+        setSize(850,550);
+        setTitle("Patient Registration");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
 
