@@ -25,7 +25,7 @@ class Reception extends JFrame {
         label.setFont(new Font("Roboto",Font.BOLD,30));
         p2.add(label);
 
-        ImageIcon i =  new ImageIcon("E:\\Side Code\\src\\ImagePro-removebg-preview.png");
+        ImageIcon i =  new ImageIcon("E:\\2nd Semester\\src\\Reception Icon.png");
         Image imageI = i.getImage().getScaledInstance(i.getIconWidth(),i.getIconHeight(),Image.SCALE_DEFAULT);
         ImageIcon ii = new ImageIcon(imageI);
         JLabel imageIcon = new JLabel(ii);
@@ -39,7 +39,7 @@ class Reception extends JFrame {
         bt1.setBounds(30,35,165,30);
         bt1.setFont(new Font("Roboto",Font.BOLD,14));
         bt1.addActionListener(ae->{
-            AddPatient addPatient = new AddPatient();
+            new AddPatient();
         });
         p1.add(bt1);
 
@@ -70,6 +70,7 @@ class Reception extends JFrame {
         bt4.setBounds(250,35,165,30);
         bt4.setFont(new Font("Roboto",Font.BOLD,14));
         bt4.addActionListener(ae->{
+            new RoomStatus();
         });
         p1.add(bt4);
 
@@ -134,18 +135,20 @@ class Reception extends JFrame {
         bt10.addActionListener(ae->{
             int choice = JOptionPane.showConfirmDialog(null,"Do You want to Logout System","Logout Message",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE );
             if(choice == JOptionPane.YES_OPTION){
-            dispose();
+                System.exit(0);
             }
         });
         p1.add(bt10);
 
-        ImageIcon icon = new ImageIcon("E:\\Side Code\\src\\Icon.png");
+        ImageIcon icon = new ImageIcon("E:\\2nd Semester\\src\\Icon.png");
         setIconImage(icon.getImage());
-        setLocation(15,15);
-        getContentPane().setBackground(Color.WHITE);
+
         setLayout(null);
         setResizable(true);
+        setTitle("Reception Page");
+        setLocation(15,15);
         setSize(1650,950);
+        getContentPane().setBackground(Color.WHITE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
