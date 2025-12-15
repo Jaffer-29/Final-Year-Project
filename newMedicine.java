@@ -85,6 +85,11 @@ public class newMedicine extends JFrame {
                 writer.newLine();
                 writer.close();
 
+                JOptionPane.showMessageDialog(null,
+                        "Data Saved Successfully",
+                        "Save Data",
+                        JOptionPane.INFORMATION_MESSAGE);
+
             }catch (Exception e){
                 JOptionPane.showMessageDialog(null,
                         "Unable to load Data",
@@ -100,12 +105,12 @@ public class newMedicine extends JFrame {
         Status = c1.isSelected();
 
 
-        ImageIcon icon = new ImageIcon("E:\\Side Code\\src\\Icon.png");
+        ImageIcon icon = new ImageIcon("2nd Semester\\src\\Icon.png");
         setIconImage(icon.getImage());
 
         setLayout(null);
         setResizable(false);
-        setTitle("Login Page");
+        setTitle("Add New Medicine");
         setLocation(450,300);
         setBounds(550,550,550,250);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
