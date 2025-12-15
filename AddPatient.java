@@ -1,11 +1,9 @@
 //This Class is for the Entry for new Patients in Hospital System.
 //The Interface is easy to deal with. File Handling is still pending
+
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 
 class AddPatient extends JFrame {
@@ -200,8 +198,11 @@ class AddPatient extends JFrame {
             String time1 = new Date().toString();
 
             String[] Data = { idType, idNumber, name1, gender1, disease1, room, deposit1, time1 };
+            String[] Appoint = {idNumber, name1, disease1, room};
 
             saveData(Data);
+            copyData(Data);
+            handelApp(Appoint);
 
             textNumber.setText("");
             textName.setText("");
@@ -229,7 +230,7 @@ class AddPatient extends JFrame {
         iconLabel.setBounds(550,150,200,200);
         panel.add(iconLabel);
 
-        ImageIcon icon1 = new ImageIcon("E:\\Side Code\\src\\Icon.png");
+        ImageIcon icon1 = new ImageIcon("2nd Semester\\src\\Icon.png");
         setIconImage(icon1.getImage());
 
         setResizable(true);
@@ -239,7 +240,9 @@ class AddPatient extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
+
 public void saveData(String[] InputData){
+
     File patients = new File("Patients.txt");
         try {
             patients.createNewFile();
@@ -250,7 +253,6 @@ public void saveData(String[] InputData){
                     writer.write(" | ");
                 }
             }
-
             writer.newLine();
             writer.close();
 
@@ -258,12 +260,65 @@ public void saveData(String[] InputData){
                     "Data Saved Successfully",
                     "Saved Data",
                     JOptionPane.INFORMATION_MESSAGE);
-
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null,
                     "Unable to load Data in System",
                     "Error in Saving",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void copyData(String[] InputData){
+
+        File patients = new File("ShowData.txt");
+
+        try {
+            patients.createNewFile();
+            BufferedWriter writer = new BufferedWriter(new FileWriter("ShowData.txt",true));
+            for (int i = 0; i < InputData.length; i++) {
+                writer.write(InputData[i]);
+                if (i < InputData.length - 1) {
+                    writer.write(" | ");
+                }
+            }
+            writer.newLine();
+            writer.close();
+
+            JOptionPane.showMessageDialog(null,
+                    "Data Saved Successfully",
+                    "Saved Data",
+                    JOptionPane.INFORMATION_MESSAGE);
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Unable to load Data in System",
+                    "Error in Saving",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void handelApp(String[] appointment){
+
+        File appoint = new File("Appointment.txt");
+
+        try {
+            appoint.createNewFile();
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Appointment.txt",true));
+            for (int i = 0; i < appointment.length; i++) {
+                writer.write(appointment[i]);
+                if (i < appointment.length - 1) {
+                    writer.write(" | ");
+                }
+            }
+
+            writer.write(" | true");
+            writer.newLine();
+            writer.close();
+
+        }catch (IOException ae){
+            ae.printStackTrace();
+            JOptionPane.showMessageDialog(null,
                     JOptionPane.ERROR_MESSAGE);
         }
     }
