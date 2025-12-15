@@ -1,18 +1,21 @@
 //This Class is for the Entry for new Patients in Hospital System.
 //The Interface is easy to deal with. File Handling is still pending
-
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Date;
 
 class AddPatient extends JFrame {
+
     JComboBox comboBox,roomBox;
     JTextField textNumber,textName,textDisease,textDeposit;
     JRadioButton r1,r2;
     JLabel date;
     JButton b1,b2;
     ButtonGroup bg;
-
 
     AddPatient(){
 
@@ -34,7 +37,7 @@ class AddPatient extends JFrame {
         pid.setForeground(Color.WHITE);
         panel.add(pid);
 
-        comboBox = new JComboBox<>(new String[] {"CNIC","Hospital ID"});
+        comboBox = new JComboBox<>(new String[] {"Select ID","CNIC","Hospital ID"});
         comboBox.setFocusable(false);
         comboBox.setBorder(BorderFactory.createEmptyBorder());
         comboBox.setUI(new javax.swing.plaf.basic.BasicComboBoxUI());
@@ -114,30 +117,19 @@ class AddPatient extends JFrame {
         panel.add(labelRoom);
 
         roomBox = new JComboBox<>(new String[] {
-                "001 - ER",
-                "002 - Imaging",
-                "003 - Dressing",
-                "101 - Lab",
-                "102 - OPD",
-                "103 - Cardiology",
-                "104 - Pediatrics",
-                "201 - ICU",
-                "202 - Surgery",
-                "OT-205",
-                "OT-206",
-                "OT-207",
-                "G-301 - General",
-                "G-302 - Private",
-                "G-303 - Private"
+                "001 - ER", "002 - Imaging", "003 - Dressing",
+                "101 - Lab", "102 - OPD", "103 - Cardiology",
+                "104 - Pediatrics", "201 - ICU", "202 - Surgery",
+                "OT-205", "OT-206", "OT-207",
+                "G-301 - General", "G-302 - Private", "G-303 - Private"
         });
         roomBox.setFocusable(false);
-        roomBox.setBorder(BorderFactory.createEmptyBorder());
-        roomBox.setUI(new javax.swing.plaf.basic.BasicComboBoxUI());
-        roomBox.setBackground(Color.DARK_GRAY);
         roomBox.setForeground(Color.WHITE);
+        roomBox.setBackground(Color.DARK_GRAY);
+        roomBox.setBorder(BorderFactory.createEmptyBorder());
         roomBox.setBounds(271, 274, 155, 20);
-
         roomBox.setFont(new Font("Roboto",Font.BOLD,14));
+        roomBox.setUI(new javax.swing.plaf.basic.BasicComboBoxUI());
         panel.add(roomBox);
 
         JLabel labelDate = new JLabel("Time ");
@@ -172,6 +164,51 @@ class AddPatient extends JFrame {
         b1.setForeground(Color.WHITE);
         b1.setBackground(Color.BLACK);
         b1.setBounds(100,430,120,30);
+        b1.addActionListener(ae->{
+
+            if (comboBox.getSelectedIndex() == 0 || textNumber.getText().trim().isEmpty() ||
+                    textName.getText().trim().isEmpty() || textDisease.getText().trim().isEmpty() ||
+                    textDeposit.getText().trim().isEmpty() || (!r1.isSelected() && !r2.isSelected())) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "All fields are required",
+                        "Input Error",
+                        JOptionPane.ERROR_MESSAGE
+                );
+                return;
+            }
+
+            String idType = (String) comboBox.getSelectedItem();
+            String idNumber = textNumber.getText();
+            String name1 = textName.getText();
+            String gender1 = "";
+            if (r1.isSelected()){
+                gender1 = "Male";
+            } else if(r2.isSelected()) {
+                gender1 = "Female";
+            }
+            else {
+                JOptionPane.showMessageDialog(null,
+                        "All Fields are Required",
+                        "Input Form",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            String disease1 = textDisease.getText();
+            String room = (String) roomBox.getSelectedItem();
+            String deposit1 = textDeposit.getText();
+            String time1 = new Date().toString();
+
+            String[] Data = { idType, idNumber, name1, gender1, disease1, room, deposit1, time1 };
+
+            saveData(Data);
+
+            textNumber.setText("");
+            textName.setText("");
+            textDisease.setText("");
+            textDeposit.setText("");
+            bg.clearSelection();
+        });
         panel.add(b1);
 
         b2= new JButton("Back");
@@ -202,5 +239,32 @@ class AddPatient extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
     }
+public void saveData(String[] InputData){
+    File patients = new File("Patients.txt");
+        try {
+            patients.createNewFile();
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Patients.txt",true));
+            for (int i = 0; i < InputData.length; i++) {
+                writer.write(InputData[i]);
+                if (i < InputData.length - 1) {
+                    writer.write(" | ");
+                }
+            }
 
+            writer.newLine();
+            writer.close();
+
+            JOptionPane.showMessageDialog(null,
+                    "Data Saved Successfully",
+                    "Saved Data",
+                    JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Unable to load Data in System",
+                    "Error in Saving",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }
