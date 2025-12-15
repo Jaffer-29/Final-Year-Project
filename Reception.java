@@ -43,13 +43,18 @@ class Reception extends JFrame {
         });
         p1.add(bt1);
 
-        JButton bt2 = new JButton("Patients Info");
+           JButton bt2 = new JButton("Patients Info");
         bt2.setBorder(null);
         bt2.setFocusPainted(false);
         bt2.setBackground(Color.WHITE);
         bt2.setBounds(30,85,165,30);
         bt2.setFont(new Font("Roboto",Font.BOLD,14));
         bt2.addActionListener(ae->{
+            try {
+                new ShowPatient();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
         p1.add(bt2);
 
