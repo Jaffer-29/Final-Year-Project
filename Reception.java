@@ -2,6 +2,7 @@
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 class Reception extends JFrame {
 
@@ -15,17 +16,17 @@ class Reception extends JFrame {
 
         JPanel p2 = new JPanel();
         p2.setLayout(null);
-        p2.setBounds(5,205,1668,768);
+        p2.setBounds(5,205,1600,768);
         p2.setBackground(new Color(173, 173, 173));
         add(p2);
 
         JLabel label = new JLabel("\"Health is Our First Priority\"");
         label.setForeground(Color.BLACK);
-        label.setBounds(1200,150,500,300);
+        label.setBounds(1050,150,500,300);
         label.setFont(new Font("Roboto",Font.BOLD,30));
         p2.add(label);
 
-        ImageIcon i =  new ImageIcon("E:\\2nd Semester\\src\\Reception Icon.png");
+        ImageIcon i =  new ImageIcon("src/Reception Icon.png");
         Image imageI = i.getImage().getScaledInstance(i.getIconWidth(),i.getIconHeight(),Image.SCALE_DEFAULT);
         ImageIcon ii = new ImageIcon(imageI);
         JLabel imageIcon = new JLabel(ii);
@@ -43,7 +44,7 @@ class Reception extends JFrame {
         });
         p1.add(bt1);
 
-           JButton bt2 = new JButton("Patients Info");
+        JButton bt2 = new JButton("Patients Info");
         bt2.setBorder(null);
         bt2.setFocusPainted(false);
         bt2.setBackground(Color.WHITE);
@@ -58,15 +59,7 @@ class Reception extends JFrame {
         });
         p1.add(bt2);
 
-        JButton bt3 = new JButton("Update Patient Info");
-        bt3.setBorder(null);
-        bt3.setFocusPainted(false);
-        bt3.setBackground(Color.WHITE);
-        bt3.setBounds(30,135,165,30);
-        bt3.setFont(new Font("Roboto",Font.BOLD,14));
-        bt3.addActionListener(ae->{
-        });
-        p1.add(bt3);
+
 
         JButton bt4 = new JButton("Rooms Status");
         bt4.setBorder(null);
@@ -79,13 +72,14 @@ class Reception extends JFrame {
         });
         p1.add(bt4);
 
-        JButton bt5 = new JButton("Search Room");
+        JButton bt5 = new JButton("Fee Structures");
         bt5.setBorder(null);
         bt5.setFocusPainted(false);
         bt5.setBackground(Color.WHITE);
         bt5.setBounds(250,85,165,30);
         bt5.setFont(new Font("Roboto",Font.BOLD,14));
         bt5.addActionListener(ae->{
+            new FeeStructure();
         });
         p1.add(bt5);
 
@@ -118,6 +112,11 @@ class Reception extends JFrame {
         bt8.setBounds(470,85,165,30);
         bt8.setFont(new Font("Roboto",Font.BOLD,14));
         bt8.addActionListener(ae->{
+            try {
+                new Medicine();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
         p1.add(bt8);
 
@@ -128,6 +127,11 @@ class Reception extends JFrame {
         bt9.setBounds(470,135,165,30);
         bt9.setFont(new Font("Roboto",Font.BOLD,14));
         bt9.addActionListener(ae->{
+            try {
+                new Appointment();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
         p1.add(bt9);
 
@@ -145,17 +149,29 @@ class Reception extends JFrame {
         });
         p1.add(bt10);
 
-        ImageIcon icon = new ImageIcon("E:\\2nd Semester\\src\\Icon.png");
-        setIconImage(icon.getImage());
+        JButton bt11 = new JButton("Project Info");
+        bt11.setBorder(null);
+        bt11.setFocusPainted(false);
+        bt11.setForeground(Color.WHITE);
+        bt11.setBounds(690, 85, 165, 30);
+        bt11.setBackground(new Color(129, 174, 237));
+        bt11.setFont(new Font("Roboto", Font.BOLD, 14));
+        bt11.addActionListener(ae -> {
+            new ProjectInfo();
+        });
+        p1.add(bt11);
+
+
+        ImageIcon iconImage = new ImageIcon("src/Icon.png");
+        setIconImage(iconImage.getImage());
 
         setLayout(null);
         setResizable(true);
         setTitle("Reception Page");
-        setLocation(15,15);
-        setSize(1650,950);
+        setLocation(20, 0);
+        setSize(1600,800);
         getContentPane().setBackground(Color.WHITE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
-
 }
